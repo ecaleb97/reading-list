@@ -1,7 +1,6 @@
 {
 	"library": [
 		{
-			"id": 1,
 			"book": {
 				"title": "El Señor de los Anillos",
 				"pages": 1200,
@@ -17,7 +16,6 @@
 			}
 		},
 		{
-			"id": 2,
 			"book": {
 				"title": "Juego de Tronos",
 				"pages": 694,
@@ -37,7 +35,6 @@
 			}
 		},
 		{
-			"id": 3,
 			"book": {
 				"title": "Harry Potter y la piedra filosofal",
 				"pages": 223,
@@ -57,7 +54,6 @@
 			}
 		},
 		{
-			"id": 4,
 			"book": {
 				"title": "1984",
 				"pages": 328,
@@ -73,7 +69,6 @@
 			}
 		},
 		{
-			"id": 5,
 			"book": {
 				"title": "Apocalipsis Zombie",
 				"pages": 444,
@@ -89,7 +84,6 @@
 			}
 		},
 		{
-			"id": 6,
 			"book": {
 				"title": "Dune",
 				"pages": 412,
@@ -105,7 +99,6 @@
 			}
 		},
 		{
-			"id": 7,
 			"book": {
 				"title": "La Guía del Autoestopista Galáctico",
 				"pages": 216,
@@ -124,7 +117,6 @@
 			}
 		},
 		{
-			"id": 8,
 			"book": {
 				"title": "Neuromante",
 				"pages": 271,
@@ -140,7 +132,6 @@
 			}
 		},
 		{
-			"id": 9,
 			"book": {
 				"title": "Fahrenheit 451",
 				"pages": 249,
@@ -156,7 +147,6 @@
 			}
 		},
 		{
-			"id": 10,
 			"book": {
 				"title": "El resplandor",
 				"pages": 688,
@@ -172,7 +162,6 @@
 			}
 		},
 		{
-			"id": 11,
 			"book": {
 				"title": "Drácula",
 				"pages": 418,
@@ -191,7 +180,6 @@
 			}
 		},
 		{
-			"id": 12,
 			"book": {
 				"title": "Frankenstein",
 				"pages": 280,
@@ -207,7 +195,6 @@
 			}
 		},
 		{
-			"id": 13,
 			"book": {
 				"title": "La llamada de Cthulhu",
 				"pages": 43,
