@@ -17,3 +17,15 @@ export interface Author {
 	name: string;
 	otherBooks: string[];
 }
+
+export type BookFilters = {
+	search?: string;
+	genre?:
+		| "Fantasía"
+		| "Ciencia ficción"
+		| "Zombies"
+		| "Terror"
+		| "All"
+		| undefined;
+	page?: number;
+};
