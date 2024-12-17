@@ -1,5 +1,5 @@
 import type { BookFilters } from "@/types";
-import book from "../../books.json";
+import book from "@/data";
 
 export function getBooks(options: BookFilters) {
 	let filteredBooks = book.library;
@@ -8,7 +8,7 @@ export function getBooks(options: BookFilters) {
 		filteredBooks = filteredBooks.filter((book) => {
 			return book.book.title
 				.toLowerCase()
-				.includes(options.search?.toLowerCase() || "");
+				.includes(options.search?.toLocaleLowerCase() || "");
 		});
 	}
 
