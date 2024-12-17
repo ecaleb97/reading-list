@@ -1,9 +1,9 @@
 "use client";
 
+import { BookCard } from "@/components/book-card";
 import { BookListFilters } from "@/components/book-filters";
-import { BookList } from "@/components/books";
+import { useBookFilters } from "@/hooks/use-book-filters";
 import { getBooks } from "@/services/book";
-import { useBookFilters } from "../hooks/use-book-filters";
 
 export default function MyBooksPage() {
 	const { search, genre, page } = useBookFilters();
@@ -14,9 +14,24 @@ export default function MyBooksPage() {
 	});
 
 	return (
-		<main className="p-4 min-h-screen max-w-[1200px] mx-auto">
+		<main className="space-y-6">
 			<BookListFilters />
-			<div className="my-8">{data && <BookList library={data} />}</div>
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+				{data.map((book) => {
+					const { book: item } = book;
+					return (
+						<BookCard
+							key={item.ISBN}
+							title={item.title}
+							cover={item.cover}
+							author={item.author}
+							rating={item.rating}
+							year={item.year}
+							actionLabel="Read"
+						/>
+					);
+				})}
+			</div>
 		</main>
 	);
 }
