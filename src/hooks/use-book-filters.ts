@@ -16,7 +16,6 @@ export function useBookFilters() {
 	const setFilters = useCallback(
 		(filters: BookFilters) => {
 			const params = new URLSearchParams(searchParams.toString());
-			console.log("params", params);
 			if (filters.search !== undefined) {
 				params.set("search", filters.search);
 			}
