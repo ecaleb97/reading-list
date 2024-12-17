@@ -1,7 +1,7 @@
 "use client";
 
-import { useBookFilters } from "@/app/hooks/use-book-filters";
-import { Input } from "@/components/ui/input";
+import { InputSearch } from "@/components/input-search";
+import { Label } from "@/components/ui/label";
 import {
 	Select,
 	SelectContent,
@@ -10,35 +10,26 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { useBookFilters } from "@/hooks/use-book-filters";
 import type { BookFilters } from "@/types";
-import { useDebounce } from "@uidotdev/usehooks";
-import { useEffect, useState } from "react";
-import book from "../../books.json";
-import { Label } from "./ui/label";
+import book from "@/data";
 
 export function BookListFilters() {
-	const { search, genre, page, setFilters } = useBookFilters();
-	const [localSearch, setLocalSearch] = useState<BookFilters["search"]>(
-		search || "",
-	);
-	const debouncedSearch = useDebounce(localSearch, 500);
-
-	useEffect(() => {
-		setFilters({ search: debouncedSearch });
-	}, [debouncedSearch, setFilters]);
+	const { genre, page, setFilters } = useBookFilters();
 
 	const minPage = Math.min(...[...book.library].map((book) => book.book.pages));
 
 	const maxPage = Math.max(...[...book.library].map((book) => book.book.pages));
 
 	return (
-		<div className="w-full flex gap-4">
-			<Input
+		<div className="w-full flex gap-4 my-8">
+			{/* <Input
 				type="text"
 				value={localSearch}
 				onChange={(e) => setLocalSearch(e.target.value)}
 				placeholder="Search Book"
-			/>
+			/> */}
+			<InputSearch />
 			<Select
 				onValueChange={(value) => {
 					console.log("value", value);
