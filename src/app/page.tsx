@@ -30,6 +30,7 @@ export default function LandingPage() {
 								author={data.author}
 								rating={data.rating}
 								year={data.year}
+								ISBN={data.ISBN}
 								actionLabel="Read"
 							/>
 						);

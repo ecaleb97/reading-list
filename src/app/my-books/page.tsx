@@ -28,6 +28,7 @@ export default function MyBooksPage() {
 							rating={item.rating}
 							year={item.year}
 							actionLabel="Read"
+							ISBN={item.ISBN}
 						/>
 					);
 				})}
