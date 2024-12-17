@@ -4,13 +4,14 @@ export interface Library {
 
 export interface Book {
 	title: string;
-	pages: number;
-	genre: string;
+	pages?: number;
+	genre?: string;
 	cover: string;
-	synopsis: string;
+	synopsis?: string;
 	year: number;
-	ISBN: string;
+	ISBN?: string;
 	author: Author;
+	rating?: number;
 }
 
 export interface Author {
