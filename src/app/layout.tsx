@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/header";
-import { NuqsAdapter } from "nuqs/adapters/next";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -30,10 +31,15 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<NuqsAdapter>
-					<Header />
-					{children}
-				</NuqsAdapter>
+				<SidebarProvider>
+					<AppSidebar />
+					<SidebarInset>
+						<Header />
+						<div className="flex-1 container mx-auto flex flex-col lg:flex-row gap-6 p-4">
+							<main className="flex-1">{children}</main>
+						</div>
+					</SidebarInset>
+				</SidebarProvider>
 			</body>
 		</html>
 	);
