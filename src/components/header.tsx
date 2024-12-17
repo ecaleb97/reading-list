@@ -1,54 +1,48 @@
-"use client";
-
+import library from "@/data";
 import { montserrat } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { AudioWaveform, Book } from "lucide-react";
+import {
+	AudioWaveform,
+	Bell,
+	Book,
+	Clock,
+	Search,
+	UserCircle,
+	Users,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const links = [
-	{
-		href: "/",
-		label: "Books",
-		icon: Book,
-	},
-	{
-		href: "/my-books",
-		label: "My books",
-		icon: AudioWaveform,
-	},
-];
+import { InputSearch } from "./input-search";
+import { MainNav } from "./main-nav";
+import { Input } from "./ui/input";
+import { Separator } from "./ui/separator";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export function Header() {
-	const pathname = usePathname();
+	console.log("Library", library);
 	return (
-		<header
-			className={`${montserrat.className} antialiased max-w-[1200px] mx-auto p-4 flex justify-between items-center`}
-		>
-			<h1 className="text-3xl font-bold">
-				<Link href="/">Books</Link>
-			</h1>
-			<nav className="text-sm font-normal flex gap-3">
-				{links.map((link) => (
-					<Link
-						href={link.href}
-						key={link.href}
-						className={cn(
-							"text-black flex gap-1 items-center hover:scale-105",
-							{
-								"bg-[#DAAA63]/70 px-4 py-1 rounded-full":
-									pathname === link.href,
-							},
-						)}
-					>
-						<link.icon className="size-4" />
-						{link.label}
+		<header className="flex pt-6 h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+			<div className="w-full flex items-center gap-2 px-4">
+				<SidebarTrigger className="-ml-1" />
+				<Separator orientation="vertical" className="mr-2 h-4" />
+				<div className="mr-2">
+					<Link href="/" className="font-serif text-xl font-bold">
+						Books
 					</Link>
-				))}
-			</nav>
-			<nav>
-				<Link href="/favorites">Favorites</Link>
-			</nav>
+				</div>
+				<div className="hidden lg:block">
+					<MainNav />
+				</div>
+				<div className="flex-1 max-w-sm ml-auto mr-4">
+					<InputSearch />
+				</div>
+				<nav className="flex items-center gap-4">
+					<Bell className="h-5 w-5 text-muted-foreground" />
+					<Clock className="h-5 w-5 text-muted-foreground hidden sm:block" />
+					<Users className="h-5 w-5 text-muted-foreground hidden sm:block" />
+					<UserCircle className="h-5 w-5 text-muted-foreground" />
+				</nav>
+			</div>
 		</header>
 	);
 }
