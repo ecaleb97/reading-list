@@ -1,11 +1,11 @@
 "use client";
 
+import { Input } from "@/components/ui/input";
 import { useBookFilters } from "@/hooks/use-book-filters";
 import type { BookFilters } from "@/types";
 import { useDebounce } from "@uidotdev/usehooks";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Input } from "./ui/input";
 
 export function InputSearch() {
 	const { search, setFilters } = useBookFilters();
