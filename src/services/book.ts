@@ -1,5 +1,9 @@
-import type { BookFilters } from "@/types";
 import book from "@/data";
+import type { BookFilters } from "@/types";
+
+export function getAllBooks() {
+	return book.library;
+}
 
 export function getBooks(options: BookFilters) {
 	let filteredBooks = book.library;
@@ -29,4 +33,8 @@ export function getBooks(options: BookFilters) {
 	}
 
 	return filteredBooks;
+}
+
+export function getBookByIsbn(id: string) {
+	return book.library.find((book) => book.book.ISBN === id);
 }
