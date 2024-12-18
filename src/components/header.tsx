@@ -1,25 +1,11 @@
-import library from "@/data";
-import { montserrat } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
-import {
-	AudioWaveform,
-	Bell,
-	Book,
-	Clock,
-	Search,
-	UserCircle,
-	Users,
-} from "lucide-react";
+import { InputSearch } from "@/components/input-search";
+import { MainNav } from "@/components/main-nav";
+import { Separator } from "@/components/ui/separator";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import { Bell, Clock, UserCircle, Users } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { InputSearch } from "./input-search";
-import { MainNav } from "./main-nav";
-import { Input } from "./ui/input";
-import { Separator } from "./ui/separator";
-import { SidebarTrigger } from "./ui/sidebar";
 
 export function Header() {
-	console.log("Library", library);
 	return (
 		<header className="flex pt-6 h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
 			<div className="w-full flex items-center gap-2 px-4">
