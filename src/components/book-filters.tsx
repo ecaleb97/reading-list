@@ -10,9 +10,9 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import book from "@/data";
 import { useBookFilters } from "@/hooks/use-book-filters";
 import type { BookFilters } from "@/types";
-import book from "@/data";
 
 export function BookListFilters() {
 	const { genre, page, setFilters } = useBookFilters();
