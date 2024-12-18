@@ -1,9 +1,14 @@
 import { BookCard } from "@/components/book-card";
-import books from "@/data";
+import { getBookByIsbn } from "@/services/book";
+import { notFound } from "next/navigation";
 
 export default function BookPage({ params }: { params: { bookId: string } }) {
-	const book = books.library.find((item) => item.book.ISBN === params.bookId);
+	const book = getBookByIsbn(params.bookId);
 	const data = book ? book.book : null;
+
+	if (!data) {
+		notFound();
+	}
 
 	return (
 		<>
