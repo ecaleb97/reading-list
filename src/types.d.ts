@@ -1,7 +1,3 @@
-export interface Library {
-	book: Book;
-}
-
 export interface Book {
 	title: string;
 	pages?: number;
