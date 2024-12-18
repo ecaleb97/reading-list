@@ -1,10 +1,11 @@
 import { BookCard } from "@/components/book-card";
 import { Button } from "@/components/ui/button";
 import { ViewToggle } from "@/components/view-toggle";
-import books from "@/data";
+import { getAllBooks } from "@/services/book";
 
 export default function LandingPage() {
-	const myBooks = books.library;
+	const books = getAllBooks();
+
 	return (
 		<div className="space-y-6">
 			<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -20,7 +21,7 @@ export default function LandingPage() {
 					+ Add A New Book
 				</Button>
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-					{myBooks.map((book) => {
+					{books.map((book) => {
 						const { book: data } = book;
 						return (
 							<BookCard
