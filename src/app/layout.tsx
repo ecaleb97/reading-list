@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { QueryProvider } from "@/providers/query-provider";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -31,17 +32,19 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<SidebarProvider>
-					<AppSidebar />
-					<SidebarInset>
-						<Header />
-						{/* {children} */}
-						<div className="flex-1 flex flex-col lg:flex-row gap-6 p-4">
-							{/* <main className="flex-1">{children}</main> */}
-							{children}
-						</div>
-					</SidebarInset>
-				</SidebarProvider>
+				<QueryProvider>
+					<SidebarProvider>
+						<AppSidebar />
+						<SidebarInset>
+							<Header />
+							{/* {children} */}
+							<div className="flex-1 flex flex-col lg:flex-row gap-6 p-4">
+								{/* <main className="flex-1">{children}</main> */}
+								{children}
+							</div>
+						</SidebarInset>
+					</SidebarProvider>
+				</QueryProvider>
 			</body>
 		</html>
 	);
