@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { ViewToggle } from "@/components/view-toggle";
 import { getAllBooks } from "@/services/book";
 
-export default function LandingPage() {
-	const books = getAllBooks();
+export default async function LandingPage() {
+	const { data } = await getAllBooks();
 
 	return (
 		<div className="space-y-6">
@@ -21,7 +21,7 @@ export default function LandingPage() {
 					+ Add A New Book
 				</Button>
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-					{books.map((book) => {
+					{data.map((book) => {
 						const { book: data } = book;
 						return (
 							<BookCard
@@ -29,7 +29,7 @@ export default function LandingPage() {
 								title={data.title}
 								cover={data.cover}
 								author={data.author}
-								rating={data.rating}
+								// rating={data}
 								year={data.year}
 								ISBN={data.ISBN}
 								actionLabel="Read"
