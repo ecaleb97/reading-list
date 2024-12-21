@@ -24,7 +24,7 @@ export function BookCard({
 		<div className="border rounded-lg p-4">
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col sm:flex-row gap-4">
-					<Link href={`/my-books/${ISBN}`}>
+					<Link href={`/books/${ISBN}`}>
 						<Image
 							alt={title}
 							src={cover}
