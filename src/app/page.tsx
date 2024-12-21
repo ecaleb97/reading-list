@@ -1,10 +1,10 @@
 import { BookCard } from "@/components/book-card";
 import { Button } from "@/components/ui/button";
 import { ViewToggle } from "@/components/view-toggle";
-import { getAllBooks } from "@/services/book";
+import { getBooksByFilters } from "@/services/book";
 
 export default async function LandingPage() {
-	const { data } = await getAllBooks();
+	const { data } = await getBooksByFilters({ search: "" });
 
 	return (
 		<div className="space-y-6">
