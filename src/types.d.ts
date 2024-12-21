@@ -17,12 +17,6 @@ export interface Author {
 
 export type BookFilters = {
 	search?: string;
-	genre?:
-		| "Fantasía"
-		| "Ciencia ficción"
-		| "Zombies"
-		| "Terror"
-		| "All"
-		| undefined;
+	genre?: "Fantasía" | "Ciencia ficción" | "Zombies" | "Terror";
 	page?: number;
 };
