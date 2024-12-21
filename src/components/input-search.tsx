@@ -1,14 +1,14 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { useBookFilters } from "@/hooks/use-book-filters";
+import { useBookParams } from "@/hooks/use-book-filters";
 import type { BookFilters } from "@/types";
 import { useDebounce } from "@uidotdev/usehooks";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function InputSearch() {
-	const { search, setFilters } = useBookFilters();
+	const { search, setFilters } = useBookParams();
 	const [localSearch, setLocalSearch] = useState<BookFilters["search"]>(
 		search || "",
 	);
@@ -26,7 +26,7 @@ export function InputSearch() {
 				type="text"
 				value={localSearch}
 				onChange={(e) => setLocalSearch(e.target.value)}
-				placeholder="Search Book"
+				placeholder="Search Books"
 				className="bg-muted/50 pl-8 pr-4 py-2 text-sm rounded-md focus:outline-none"
 			/>
 		</div>
