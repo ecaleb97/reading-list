@@ -1,40 +1,32 @@
-import book from "@/data";
+import { client } from "@/lib/rpc";
 import type { BookFilters } from "@/types";
 
-export function getAllBooks() {
-	return book.library;
+export async function getBooksByFilters({ search, genre }: BookFilters) {
+	const response = await client.api.books.$get({
+		query: {
+			search: search as string,
+			genre: genre as string, 
+		},
+	});
+
+	if (!response.ok) {
+		throw new Error(`Error fetching books: ${response.statusText}`);
+	}
+
+	const data = await response.json();
+	return data;
 }
 
-export function getBooks(options: BookFilters) {
-	let filteredBooks = book.library;
+export async function getBookByIsbn(id: string) {
+	const response = await client.api.books[":isbn"].$get({
+		param: {
+			isbn: id,
+		},
+	});
 
-	if (options?.search) {
-		filteredBooks = filteredBooks.filter((book) => {
-			return book.book.title
-				.toLowerCase()
-				.includes(options.search?.toLocaleLowerCase() || "");
-		});
+	if (!response.ok) {
+		throw new Error(`Error fetching book: ${response.statusText}`);
 	}
 
-	if (options?.genre) {
-		filteredBooks = filteredBooks.filter((book) => {
-			return book.book.genre === options.genre;
-		});
-	}
-
-	if (options.genre === "All") {
-		filteredBooks = book.library;
-	}
-
-	if (options.page) {
-		filteredBooks = filteredBooks.filter((book) => {
-			return book.book.pages <= (options.page as number);
-		});
-	}
-
-	return filteredBooks;
-}
-
-export function getBookByIsbn(id: string) {
-	return book.library.find((book) => book.book.ISBN === id);
+	return await response.json();
 }
