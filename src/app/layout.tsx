@@ -5,6 +5,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { Header } from "@/components/header";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { QueryProvider } from "@/providers/query-provider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = localFont({
 	src: "./fonts/GeistVF.woff",
@@ -32,19 +33,21 @@ export default function RootLayout({
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
-				<QueryProvider>
-					<SidebarProvider>
-						<AppSidebar />
-						<SidebarInset>
-							<Header />
-							{/* {children} */}
-							<div className="flex-1 flex flex-col lg:flex-row gap-6 p-4">
-								{/* <main className="flex-1">{children}</main> */}
-								{children}
-							</div>
-						</SidebarInset>
-					</SidebarProvider>
-				</QueryProvider>
+				<NuqsAdapter>
+					<QueryProvider>
+						<SidebarProvider>
+							<AppSidebar />
+							<SidebarInset>
+								<Header />
+								{/* {children} */}
+								<div className="flex-1 flex flex-col lg:flex-row gap-6 p-4">
+									{/* <main className="flex-1">{children}</main> */}
+									{children}
+								</div>
+							</SidebarInset>
+						</SidebarProvider>
+					</QueryProvider>
+				</NuqsAdapter>
 			</body>
 		</html>
 	);
