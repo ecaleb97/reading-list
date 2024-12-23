@@ -4,14 +4,16 @@ import { Hono } from "hono";
 import { z } from "zod";
 
 const app = new Hono()
+	.get("/all", async (c) => {
+		return c.json({ data: books.library });
+	})
 	.get(
 		"/",
 		zValidator(
 			"query",
 			z.object({
 				search: z.string().optional(),
-				genre: z
-					.enum(["Fantasía", "Ciencia ficción", "Zombies", "Terror"]),
+				genre: z.enum(["Fantasía", "Ciencia ficción", "Zombies", "Terror"]),
 				page: z.coerce.number().optional(),
 			}),
 		),
@@ -38,13 +40,11 @@ const app = new Hono()
 				);
 			}
 
-			// if (page) {
-			// 	filteredBooks = filteredBooks.filter((book) => {
-			// 		return book.book.pages <= Number(page);
-			// 	});
-			// }
-
-			console.log("After Filter", books);
+			if (options.page) {
+				filteredBooks = filteredBooks.filter((book) => {
+					return book.book.pages <= Number(options.page);
+				});
+			}
 
 			return c.json({ data: filteredBooks });
 		},
