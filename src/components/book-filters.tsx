@@ -14,7 +14,6 @@ import { useBookParams } from "@/hooks/use-book-filters";
 import type { BookFilters } from "@/types";
 
 export function BookListFilters() {
-	// const { genre, setFilters } = useBookFilters();
 	const { genre, setFilters } = useBookParams();
 
 	// const minPage = Math.min(...[...book.library].map((book) => book.book.pages));
