@@ -11,11 +11,11 @@ export function Header() {
 			<div className="w-full flex items-center gap-2 px-4">
 				<SidebarTrigger className="-ml-1" />
 				<Separator orientation="vertical" className="mr-2 h-4" />
-				<div className="mr-2">
+				{/* <div className="mr-2">
 					<Link href="/" className="font-serif text-xl font-bold">
 						Books
 					</Link>
-				</div>
+				</div> */}
 				<div className="hidden lg:block">
 					<MainNav />
 				</div>
