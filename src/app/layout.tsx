@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { AppSidebar } from "@/components/app-sidebar";
-import { Header } from "@/components/header";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { QueryProvider } from "@/providers/query-provider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
@@ -34,19 +31,7 @@ export default function RootLayout({
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
 			>
 				<NuqsAdapter>
-					<QueryProvider>
-						<SidebarProvider>
-							<AppSidebar />
-							<SidebarInset>
-								<Header />
-								{/* {children} */}
-								<div className="flex-1 flex flex-col lg:flex-row gap-6 p-4">
-									{/* <main className="flex-1">{children}</main> */}
-									{children}
-								</div>
-							</SidebarInset>
-						</SidebarProvider>
-					</QueryProvider>
+					<QueryProvider>{children}</QueryProvider>
 				</NuqsAdapter>
 			</body>
 		</html>
